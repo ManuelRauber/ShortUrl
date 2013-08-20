@@ -16,7 +16,7 @@ namespace ShortUrl.DataAccessLayer.Migrations
 
 		public Configuration()
 		{
-			AutomaticMigrationsEnabled = false;
+			AutomaticMigrationsEnabled = true;
 		}
 
 		protected override void Seed(ShortUrl.DataAccessLayer.ShortUrlContext context)
