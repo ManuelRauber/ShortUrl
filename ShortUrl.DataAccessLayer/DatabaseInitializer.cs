@@ -14,6 +14,14 @@ namespace ShortUrl.DataAccessLayer
 		private static object _initializerLock = new object();
 		private static bool _isInitialized;
 
+		public static bool IsInitialized
+		{
+			get
+			{
+				return _isInitialized;
+			}
+		}
+
 		public static void InitializeDatabase()
 		{
 			LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
