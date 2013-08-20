@@ -1,6 +1,4 @@
-﻿using ShortUrl.DataAccessLayer;
-
-namespace ShortUrl.Contracts.Repositories
+﻿namespace ShortUrl.DataAccessLayer.Contacts
 {
 	public interface IDatabaseFactory
 	{

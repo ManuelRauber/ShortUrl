@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ShortUrl.Contracts.Repositories;
+using ShortUrl.DataAccessLayer.Contacts;
 
 namespace ShortUrl.DataAccessLayer
 {

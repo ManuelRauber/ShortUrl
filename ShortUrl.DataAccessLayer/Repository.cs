@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using ShortUrl.Contracts.Repositories;
+using ShortUrl.DataAccessLayer.Contacts;
 
 namespace ShortUrl.DataAccessLayer
 {
@@ -32,6 +33,18 @@ namespace ShortUrl.DataAccessLayer
 		public virtual T Get(object id)
 		{
 			return _dbSet.Find(id);
+		}
+
+		public IQueryable<T> Get(Expression<Func<T, bool>> filter)
+		{
+			IQueryable<T> query = _dbSet;
+
+			if (filter != null)
+			{
+				query = query.Where(filter);
+			}
+
+			return query;
 		}
 	}
 }
