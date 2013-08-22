@@ -17,8 +17,6 @@ namespace ShortUrl
 		{
 			WebApiConfig.Register(GlobalConfiguration.Configuration);
 			Bootstrap.Run(GlobalConfiguration.Configuration);
-
-			DatabaseInitializer.InitializeDatabase();
 		}
 	}
 }

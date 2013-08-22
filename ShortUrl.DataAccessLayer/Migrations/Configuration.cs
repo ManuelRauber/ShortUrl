@@ -1,6 +1,6 @@
 using System.Configuration;
 using System.Web.Security;
-using WebMatrix.WebData;
+using ShortUrl.Model;
 
 namespace ShortUrl.DataAccessLayer.Migrations
 {
@@ -21,11 +21,6 @@ namespace ShortUrl.DataAccessLayer.Migrations
 
 		protected override void Seed(ShortUrl.DataAccessLayer.ShortUrlContext context)
 		{
-			if (DatabaseInitializer.IsInitialized)
-			{
-				DatabaseInitializer.InitializeDatabase();
-			}
-			
 			bool tmp;
 
 			if (Boolean.TryParse(ConfigurationManager.AppSettings["CreateAdminUser"], out tmp)
@@ -37,20 +32,7 @@ namespace ShortUrl.DataAccessLayer.Migrations
 
 		private void SeedAdminUser(ShortUrlContext context)
 		{
-			if (!WebSecurity.UserExists(_adminUserName))
-			{
-				WebSecurity.CreateUserAndAccount(_adminUserName, _adminUserName);
-			}
 
-			if (!Roles.RoleExists("Administrator"))
-			{
-				Roles.CreateRole("Administrator");
-			}
-
-			if (!Roles.IsUserInRole("Admin", "Administrator"))
-			{
-				Roles.AddUserToRole("Admin", "Administrator");
-			}
 		}
 	}
 }
