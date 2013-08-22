@@ -10,7 +10,7 @@ using Autofac.Integration.WebApi;
 
 namespace ShortUrl
 {
-	public class Bootstrap
+	public static class Bootstrap
 	{
 		public static void Run(HttpConfiguration config)
 		{
