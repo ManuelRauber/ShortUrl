@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortUrl.DataAccessLayer", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortUrl.Repositories", "ShortUrl.Repositories\ShortUrl.Repositories.csproj", "{229FBDC6-40D7-4FD6-B195-DE2783449633}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortUrl.Services", "ShortUrl.Services\ShortUrl.Services.csproj", "{6494D5C4-F968-40F3-9512-38E94CCEF087}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{229FBDC6-40D7-4FD6-B195-DE2783449633}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{229FBDC6-40D7-4FD6-B195-DE2783449633}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{229FBDC6-40D7-4FD6-B195-DE2783449633}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6494D5C4-F968-40F3-9512-38E94CCEF087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6494D5C4-F968-40F3-9512-38E94CCEF087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6494D5C4-F968-40F3-9512-38E94CCEF087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6494D5C4-F968-40F3-9512-38E94CCEF087}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
