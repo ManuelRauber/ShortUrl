@@ -98,8 +98,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\Bootstrap.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\Bootstrap.cs" />
+    <Compile Include="Common\WebApiConfig.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
