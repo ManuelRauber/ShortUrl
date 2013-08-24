@@ -134,6 +134,10 @@
       <Project>{229FBDC6-40D7-4FD6-B195-DE2783449633}</Project>
       <Name>ShortUrl.Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ShortUrl.Services\ShortUrl.Services.csproj">
+      <Project>{6494D5C4-F968-40F3-9512-38E94CCEF087}</Project>
+      <Name>ShortUrl.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

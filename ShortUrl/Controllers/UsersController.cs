@@ -8,22 +8,24 @@ using System.Web.Http;
 using ShortUrl.Model;
 using ShortUrl.Repositories;
 using ShortUrl.Repositories.Contracts;
+using ShortUrl.Services.Contracts;
 
 namespace ShortUrl.Controllers
 {
 	public class UsersController : ApiController
 	{
-		private readonly IUserRepository _userRepository;
+		private readonly IUserService _userService;
 
-		public UsersController(IUserRepository userRepository)
+		public UsersController(IUserService userService)
 		{
-			_userRepository = userRepository;
+			_userService = userService;
 		}
 
 		[HttpGet]
 		public IEnumerable<User> Get()
 		{
-			return _userRepository.Get(filter: null).ToList();
+			return null;
+			//	return _userService.Get(filter: null).ToList();
 		}
 	}
 }

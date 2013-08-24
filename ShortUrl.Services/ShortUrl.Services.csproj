@@ -40,12 +40,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
+    <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShortUrl.DataAccessLayer\ShortUrl.DataAccessLayer.csproj">
       <Project>{53B01327-BCB7-46CD-9069-22AA7FAD4F2E}</Project>
       <Name>ShortUrl.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShortUrl.Repositories\ShortUrl.Repositories.csproj">
+      <Project>{229FBDC6-40D7-4FD6-B195-DE2783449633}</Project>
+      <Name>ShortUrl.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
