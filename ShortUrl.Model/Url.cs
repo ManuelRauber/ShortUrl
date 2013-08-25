@@ -12,6 +12,5 @@ namespace ShortUrl.Model
 		public string LongUrl { get; set; }
 		public DateTime? ExpirationDate { get; set; }
 		public int HitCount { get; set; }
-		public virtual User User { get; set; }
 	}
 }
