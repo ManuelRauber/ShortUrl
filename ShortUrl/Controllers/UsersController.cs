@@ -24,8 +24,7 @@ namespace ShortUrl.Controllers
 		[HttpGet]
 		public IEnumerable<User> Get()
 		{
-			return null;
-			//	return _userService.Get(filter: null).ToList();
+			return _userService.AllUsers();
 		}
 	}
 }

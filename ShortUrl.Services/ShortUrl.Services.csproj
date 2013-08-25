@@ -49,6 +49,10 @@
       <Project>{53B01327-BCB7-46CD-9069-22AA7FAD4F2E}</Project>
       <Name>ShortUrl.DataAccessLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ShortUrl.Model\ShortUrl.Model.csproj">
+      <Project>{8CCC45C7-8F84-4692-B276-51DD46C04690}</Project>
+      <Name>ShortUrl.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShortUrl.Repositories\ShortUrl.Repositories.csproj">
       <Project>{229FBDC6-40D7-4FD6-B195-DE2783449633}</Project>
       <Name>ShortUrl.Repositories</Name>
