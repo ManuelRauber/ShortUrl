@@ -63,11 +63,6 @@ namespace ShortUrl.Services
 
 		private bool IsUrlValid(string longUrl)
 		{
-			if (String.IsNullOrWhiteSpace(longUrl))
-			{
-				return false;
-			}
-
 			try
 			{
 				var url = new Uri(longUrl);
