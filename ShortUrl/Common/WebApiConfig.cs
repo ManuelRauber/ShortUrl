@@ -6,11 +6,24 @@ namespace ShortUrl.Common
 	{
 		public static void Register(HttpConfiguration config)
 		{
-			config.Routes.MapHttpRoute(
-					name: "DefaultApi",
-					routeTemplate: "api/{controller}/{id}",
-					defaults: new { id = RouteParameter.Optional }
-			);
+			config.Routes.MapHttpRoute("Add", "Add", new
+			{
+				controller = "Url",
+				action = "Add",
+			});
+
+			config.Routes.MapHttpRoute("AddSliding", "AddSliding", new
+			{
+				controller = "Url",
+				action = "Add",
+			});
+
+			config.Routes.MapHttpRoute("Get", "{id}/{verbose}", new
+			{
+				controller = "Url",
+				action = "Get",
+				verbose = RouteParameter.Optional,
+			});
 
 			// Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.
 			// To avoid processing unexpected or malicious queries, use the validation settings on QueryableAttribute to validate incoming queries.

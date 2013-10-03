@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using ShortUrl.Core.Converters;
 using ShortUrl.DataAccessLayer.Contacts;
 using ShortUrl.Model;
@@ -47,7 +48,10 @@ namespace ShortUrl.Services
 				HitCount = 0,
 			};
 
-			return _urlRepository.Add(url);
+			url = _urlRepository.Add(url);
+			UnitOfWork.Commit();
+
+			return url;
 		}
 
 		public Url Add(string longUrl, string timeString)

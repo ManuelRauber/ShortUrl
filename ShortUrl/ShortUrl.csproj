@@ -108,6 +108,7 @@
   <ItemGroup>
     <Compile Include="Common\Bootstrap.cs" />
     <Compile Include="Common\WebApiConfig.cs" />
+    <Compile Include="Controllers\UrlController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -126,13 +127,15 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ShortUrl.Core\ShortUrl.Core.csproj">
+      <Project>{CDA1C8C6-EC0B-44DB-87A4-0DA26BA87DFB}</Project>
+      <Name>ShortUrl.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShortUrl.DataAccessLayer\ShortUrl.DataAccessLayer.csproj">
       <Project>{53B01327-BCB7-46CD-9069-22AA7FAD4F2E}</Project>
       <Name>ShortUrl.DataAccessLayer</Name>
