@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -12,10 +13,13 @@ namespace ShortUrl.DataAccessLayer
 	public class Repository<T> : IRepository<T>
 		where T : class
 	{
-		private readonly IDbSet<T> _dbSet; 
+		private readonly IDbSet<T> _dbSet;
+		private readonly IDatabaseFactory _factory;
 
 		public Repository(IDatabaseFactory factory)
 		{
+			_factory = factory;
+
 			var context = factory.GetShortUrlContext();
 			_dbSet = context.Set<T>();
 		}
@@ -28,6 +32,12 @@ namespace ShortUrl.DataAccessLayer
 		public virtual void Delete(T entity)
 		{
 			_dbSet.Remove(entity);
+		}
+
+		public void Update(T entity)
+		{
+			_dbSet.Attach(entity);
+			_factory.GetShortUrlContext().Entry(entity).State = EntityState.Modified;
 		}
 
 		public virtual T Get(object id)

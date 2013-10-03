@@ -9,6 +9,7 @@ namespace ShortUrl.DataAccessLayer.Contacts
 	{
 		T Add(T entity);
 		void Delete(T entity);
+		void Update(T entity);
 		T Get(object id);
 		IQueryable<T> Get();
 	}
