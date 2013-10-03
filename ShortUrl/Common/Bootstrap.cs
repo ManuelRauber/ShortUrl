@@ -26,7 +26,7 @@ namespace ShortUrl.Common
 			builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
 			builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
-			builder.RegisterType<DatabaseFactory>().As<IDatabaseFactory>();
+			builder.RegisterType<DatabaseFactory>().As<IDatabaseFactory>().SingleInstance();
 			builder.RegisterType<UrlRepository>().As<IUrlRepository>();
 			builder.RegisterType<SimplePatternGenerator>().As<IPatternGenerator>();
 			builder.RegisterType<UrlService>().As<IUrlService>();
