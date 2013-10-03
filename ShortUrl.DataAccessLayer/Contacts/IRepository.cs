@@ -10,6 +10,6 @@ namespace ShortUrl.DataAccessLayer.Contacts
 		T Add(T entity);
 		void Delete(T entity);
 		T Get(object id);
-		IQueryable<T> Get(Expression<Func<T, bool>> filter);
+		IQueryable<T> Get();
 	}
 }

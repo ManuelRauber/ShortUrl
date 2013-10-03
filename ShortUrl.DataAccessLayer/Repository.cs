@@ -35,14 +35,9 @@ namespace ShortUrl.DataAccessLayer
 			return _dbSet.Find(id);
 		}
 
-		public IQueryable<T> Get(Expression<Func<T, bool>> filter)
+		public IQueryable<T> Get()
 		{
 			IQueryable<T> query = _dbSet;
-
-			if (filter != null)
-			{
-				query = query.Where(filter);
-			}
 
 			return query;
 		}
