@@ -7,9 +7,9 @@ namespace ShortUrl.Core.Converters
 {
 	public static class TimeStringToDateTimeConverter
 	{
-		private static readonly string _parseRegEx = @"(\d+)([mdwy])";
+		private static readonly string _parseRegEx = @"(\d+)([a-z]*)";
 
-		private static Dictionary<string, int> _unitMultipliers = new Dictionary<string, int>
+		private static readonly Dictionary<string, int> _unitMultipliers = new Dictionary<string, int>
 		{
 		  { "m", 60 },
 			{ "d", 60 * 60 * 24 },
@@ -48,10 +48,15 @@ namespace ShortUrl.Core.Converters
 
 			var match = Regex.Match(timeString, _parseRegEx, RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
+			if (!match.Success)
+			{
+				throw new Exception(String.Format("TimeString '{0}' is not valid", timeString));
+			}
+
 			while (match.Success)
 			{
-				var value = match.Groups[0].Value;
-				var unit = match.Groups[1].Value;
+				var value = match.Groups[1].Value;
+				var unit = match.Groups[2].Value;
 				unit = unit.ToLower();
 				
 				int multiplier;
