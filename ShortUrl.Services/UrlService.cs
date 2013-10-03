@@ -17,7 +17,7 @@ namespace ShortUrl.Services
 			_urlRepository = urlRepository;
 		}
 
-		public Url Get(Guid id)
+		public Url Get(string id)
 		{
 			var url = _urlRepository.Get(id);
 			
@@ -30,6 +30,16 @@ namespace ShortUrl.Services
 
 		public Url Add(string longUrl, DateTime? expirationDate)
 		{
+			if (!IsUrlValid(longUrl))
+			{
+				throw new ArgumentException("Url is not valid", "longUrl");
+			}
+
+			if (!IsExpirationDateValid(expirationDate))
+			{
+				throw new ArgumentException("Expiration date is invalid", "expirationDate");
+			}
+
 			var url = new Url()
 			{
 				LongUrl = longUrl,
@@ -38,16 +48,6 @@ namespace ShortUrl.Services
 			};
 
 			return _urlRepository.Add(url);
-		}
-
-		/// <summary>
-		/// Creates a short url without an expirationDate
-		/// </summary>
-		/// <param name="longUrl"></param>
-		/// <returns></returns>
-		public Url Add(string longUrl)
-		{
-			return Add(longUrl, expirationDate: null);
 		}
 
 		public Url Add(string longUrl, string timeString)
@@ -59,6 +59,31 @@ namespace ShortUrl.Services
 		private DateTime? ConvertTimeStringToDateTime(string timeString)
 		{
 			return TimeStringToDateTimeConverter.Convert(timeString);
+		}
+
+		private bool IsUrlValid(string longUrl)
+		{
+			if (String.IsNullOrWhiteSpace(longUrl))
+			{
+				return false;
+			}
+
+			try
+			{
+				var url = new Uri(longUrl);
+			}
+			catch
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		private bool IsExpirationDateValid(DateTime? expirationDate)
+		{
+			return (expirationDate == null)
+			       || (expirationDate.Value > DateTime.Now);
 		}
 	}
 }
