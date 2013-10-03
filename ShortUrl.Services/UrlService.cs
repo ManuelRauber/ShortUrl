@@ -25,6 +25,7 @@ namespace ShortUrl.Services
 			url.HitCount++;
 
 			_urlRepository.Update(url);
+			UnitOfWork.Commit();
 
 			return url;
 		}
