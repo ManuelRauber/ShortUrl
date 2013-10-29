@@ -105,6 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ApiAuthorizationFilterAttribute.cs" />
     <Compile Include="Common\Bootstrap.cs" />
     <Compile Include="Common\WebApiConfig.cs" />
     <Compile Include="Controllers\UrlController.cs" />

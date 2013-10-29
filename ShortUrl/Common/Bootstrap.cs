@@ -2,6 +2,7 @@
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
+using ShortUrl.Controllers;
 using ShortUrl.Core.Patterns;
 using ShortUrl.DataAccessLayer;
 using ShortUrl.DataAccessLayer.Contacts;
@@ -30,6 +31,11 @@ namespace ShortUrl.Common
 			builder.RegisterType<UrlRepository>().As<IUrlRepository>();
 			builder.RegisterType<SimplePatternGenerator>().As<IPatternGenerator>();
 			builder.RegisterType<UrlService>().As<IUrlService>();
+
+			builder.RegisterWebApiFilterProvider(config);
+			builder.Register(x => new ApiAuthorizationFilterAttribute())
+				.AsWebApiAuthorizationFilterFor<UrlController>()
+				.InstancePerApiRequest();
 
 			var container = builder.Build();
 
