@@ -53,6 +53,7 @@
     <Compile Include="Contacts\IDatabaseFactory.cs" />
     <Compile Include="Contacts\IUnitOfWork.cs" />
     <Compile Include="DatabaseFactory.cs" />
+    <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Contacts\IRepository.cs" />
