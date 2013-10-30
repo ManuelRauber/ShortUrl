@@ -107,7 +107,6 @@
   <ItemGroup>
     <Compile Include="Common\ApiKeyAuthorizationFilterAttribute.cs" />
     <Compile Include="Common\Bootstrap.cs" />
-    <Compile Include="Common\BypassApiKeyFilterAttribute.cs" />
     <Compile Include="Common\WebApiConfig.cs" />
     <Compile Include="Controllers\UrlController.cs" />
     <Compile Include="Global.asax.cs">

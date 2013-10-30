@@ -34,16 +34,13 @@ namespace ShortUrl.Common
 			builder.RegisterType<UrlService>().As<IUrlService>();
 
 			builder.RegisterWebApiFilterProvider(config);
-			builder.Register(x => new BypassApiKeyFilterAttribute())
-				.AsWebApiActionFilterFor<UrlController>(x => x.Get(default(string)))
-				.InstancePerApiRequest();
-			builder.Register(x => new BypassApiKeyFilterAttribute())
-				.AsWebApiActionFilterFor<UrlController>(x => x.Get(default(string), default(bool)))
-				.InstancePerApiRequest();
 
 			builder.Register(x => new ApiKeyAuthorizationFilterAttribute())
 				.AsWebApiAuthorizationFilterFor<UrlController>()
 				.InstancePerApiRequest();
+
+			builder.OverrideAuthorizationFilterFor<UrlController>(x => x.Get(default(string)));
+			builder.OverrideAuthorizationFilterFor<UrlController>(x => x.Get(default(string), default(bool)));
 
 			var container = builder.Build();
 
