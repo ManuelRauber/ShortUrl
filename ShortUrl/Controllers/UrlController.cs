@@ -73,7 +73,7 @@ namespace ShortUrl.Controllers
 
 			if (null == url)
 			{
-				return null;
+				throw new HttpResponseException(HttpStatusCode.NotFound);
 			}
 
 			if (verbose)
@@ -81,7 +81,10 @@ namespace ShortUrl.Controllers
 				return url;
 			}
 
-			return url.LongUrl;
+			var message = Request.CreateResponse(HttpStatusCode.Redirect);
+			message.Headers.Location = new Uri(url.LongUrl);
+
+			return message;
 		}
 
 		private string FormatUrl(Url url)
