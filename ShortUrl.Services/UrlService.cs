@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
 using ShortUrl.Core.Converters;
 using ShortUrl.DataAccessLayer.Contacts;
@@ -49,10 +50,35 @@ namespace ShortUrl.Services
 				HitCount = 0,
 			};
 
+			// TODO: Refactor this, this is ugly!
+			Url duplicate;
+
+			if (IsDuplicate(url, out duplicate))
+			{
+				return duplicate;
+			}
+
 			url = _urlRepository.Add(url);
 			UnitOfWork.Commit();
 
 			return url;
+		}
+
+		private bool IsDuplicate(Url url, out Url duplicate)
+		{
+			duplicate = null;
+
+			if (url == null)
+			{
+				return false;
+			}
+
+			var dbUrl = _urlRepository.Get()
+				.Where(x => x.LongUrl.Equals(url.LongUrl))
+				.SingleOrDefault(x => x.ExpirationDate.Equals(url.ExpirationDate));
+
+			duplicate = dbUrl;
+			return dbUrl != null;
 		}
 
 		public Url Add(string longUrl, string timeString)
