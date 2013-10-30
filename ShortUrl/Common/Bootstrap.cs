@@ -41,7 +41,7 @@ namespace ShortUrl.Common
 				.AsWebApiActionFilterFor<UrlController>(x => x.Get(default(string), default(bool)))
 				.InstancePerApiRequest();
 
-			builder.Register(x => new ApiAuthorizationFilterAttribute())
+			builder.Register(x => new ApiKeyAuthorizationFilterAttribute())
 				.AsWebApiAuthorizationFilterFor<UrlController>()
 				.InstancePerApiRequest();
 

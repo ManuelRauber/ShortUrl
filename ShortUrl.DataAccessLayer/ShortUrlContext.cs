@@ -16,5 +16,13 @@ namespace ShortUrl.DataAccessLayer
 		public ShortUrlContext()
 			: base("ShortUrlDatabaseConnection")
 		{ }
+
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<Url>()
+				.HasKey(x => x.Id)
+				.Property(x => x.LongUrl)
+				.HasMaxLength(400);
+		}
 	}
 }
