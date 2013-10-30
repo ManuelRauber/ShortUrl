@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Caching;
 using System.Web.Http;
+using Microsoft.SqlServer.Server;
+using ShortUrl.Model;
 using ShortUrl.Services.Contracts;
 
 namespace ShortUrl.Controllers
@@ -12,6 +15,19 @@ namespace ShortUrl.Controllers
 	public class UrlController : ApiController
 	{
 		private readonly IUrlService _urlService;
+
+		private static readonly string _baseUrlConfigurationName = "BaseUrl";
+		private static readonly string _baseUrl;
+
+		static UrlController()
+		{
+			_baseUrl = ConfigurationManager.AppSettings[_baseUrlConfigurationName];
+
+			if (String.IsNullOrWhiteSpace(_baseUrl))
+			{
+				throw new ConfigurationErrorsException("BaseUrl is not set!");
+			}
+		}
 
 		public UrlController(IUrlService urlService)
 		{
@@ -28,7 +44,7 @@ namespace ShortUrl.Controllers
 
 			var url = _urlService.Add(longUrl, expirationDate);
 
-			return url.Id;
+			return FormatUrl(url);
 		}
 
 		[HttpGet]
@@ -41,7 +57,7 @@ namespace ShortUrl.Controllers
 
 			var url = _urlService.Add(longUrl, timeString);
 
-			return url.Id;
+			return FormatUrl(url);
 		}
 
 		[HttpGet]
@@ -66,6 +82,16 @@ namespace ShortUrl.Controllers
 			}
 
 			return url.LongUrl;
+		}
+
+		private string FormatUrl(Url url)
+		{
+			if (url == null)
+			{
+				return String.Empty;
+			}
+
+			return String.Format("{0}{1}", _baseUrl, url.Id);
 		}
 	}
 }
