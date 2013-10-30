@@ -9,13 +9,13 @@ using Autofac.Integration.WebApi;
 
 namespace ShortUrl.Common
 {
-	public class ApiAuthorizationFilterAttribute : IAutofacAuthorizationFilter
+	public class ApiKeyAuthorizationFilterAttribute : IAutofacAuthorizationFilter
 	{
 		private static readonly string _apiKey;
 		private static readonly string _apiKeyConfigurationName = "ApiKey";
 		private static readonly string _apiKeyQueryParameterKeyName = "apiKey";
 
-		static ApiAuthorizationFilterAttribute()
+		static ApiKeyAuthorizationFilterAttribute()
 		{
 			_apiKey = ConfigurationManager.AppSettings[_apiKeyConfigurationName];
 

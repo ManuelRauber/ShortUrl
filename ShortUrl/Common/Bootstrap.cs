@@ -33,7 +33,7 @@ namespace ShortUrl.Common
 			builder.RegisterType<UrlService>().As<IUrlService>();
 
 			builder.RegisterWebApiFilterProvider(config);
-			builder.Register(x => new ApiAuthorizationFilterAttribute())
+			builder.Register(x => new ApiKeyAuthorizationFilterAttribute())
 				.AsWebApiAuthorizationFilterFor<UrlController>()
 				.InstancePerApiRequest();
 
