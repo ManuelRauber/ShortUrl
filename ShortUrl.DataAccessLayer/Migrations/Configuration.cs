@@ -13,7 +13,7 @@ namespace ShortUrl.DataAccessLayer.Migrations
 	{
 		public Configuration()
 		{
-			AutomaticMigrationsEnabled = true;
+			AutomaticMigrationsEnabled = false;
 		}
 	}
 }
