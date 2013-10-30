@@ -32,6 +32,16 @@ namespace ShortUrl.Common
 				DenyRequest();
 			}
 
+			if (actionContext.ActionDescriptor == null)
+			{
+				DenyRequest();
+			}
+
+			if (actionContext.ActionDescriptor.GetCustomAttributes<BypassApiKeyFilterAttribute>().Any())
+			{
+				return;
+			}
+
 			if (actionContext.Request == null)
 			{
 				DenyRequest();

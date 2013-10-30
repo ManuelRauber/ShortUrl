@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Caching;
 using System.Web.Http;
+using ShortUrl.Common;
 using ShortUrl.Services.Contracts;
 
 namespace ShortUrl.Controllers

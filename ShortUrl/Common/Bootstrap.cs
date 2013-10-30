@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
@@ -33,6 +34,13 @@ namespace ShortUrl.Common
 			builder.RegisterType<UrlService>().As<IUrlService>();
 
 			builder.RegisterWebApiFilterProvider(config);
+			builder.Register(x => new BypassApiKeyFilterAttribute())
+				.AsWebApiActionFilterFor<UrlController>(x => x.Get(default(string)))
+				.InstancePerApiRequest();
+			builder.Register(x => new BypassApiKeyFilterAttribute())
+				.AsWebApiActionFilterFor<UrlController>(x => x.Get(default(string), default(bool)))
+				.InstancePerApiRequest();
+
 			builder.Register(x => new ApiAuthorizationFilterAttribute())
 				.AsWebApiAuthorizationFilterFor<UrlController>()
 				.InstancePerApiRequest();
